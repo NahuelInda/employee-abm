@@ -1,0 +1,40 @@
+<h2>
+  Lista de Empleados
+</h2>
+
+<form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+  <input formControlName="name" placeholder="Nombre">
+  <input formControlName="position" placeholder="Posición">
+  <input type="number" formControlName="salary" placeholder="Salario">
+  <button type="submit">{{ editingEmployee ? 'Actualizar' : 'Agregar' }} Empleado</button>
+</form>
+
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Posición</th>
+      <th>Salario</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of paginatedEmployees">
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.position }}</td>
+      <td>{{ emp.salary }}</td>
+      <td>
+        <button (click)="editEmployee(emp)">Editar</button>
+        <button (click)="deleteEmployee(emp.id)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <button *ngFor="let page of [].constructor(totalPages); let i = index" (click)="changePage(i+1)">
+    {{ i+1 }}
+  </button>
+</div>

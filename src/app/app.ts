@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  imports: [RouterOutlet, ReactiveFormsModule],
+  
 })
-export class App {
-  protected readonly title = signal('employee-abm');
-}
+export class AppComponent {}
